@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mao&#39;s Blog</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="原型、原型链原型其实就是一个对象，该对象拥有proto（保存对原型对象的链接，即原型链）、prototype（改变当前对象的属性、方法）、Constructor（保存当前创建的对象的函数引用）。常见,"> 
+    <meta name="author" content="Mao"> 
+    <link rel="alternative" href="atom.xml" title="Mao&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">浅谈css3media媒体查询</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">浅谈css3media媒体查询</h1>
+        <div class="stuff">
+            <span>九月 13, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Productivity/">Productivity</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Workflow/">Workflow</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="浅谈css3media媒体查询"><a href="#浅谈css3media媒体查询" class="headerlink" title="浅谈css3media媒体查询"></a>浅谈css3media媒体查询</h3><p>在没有css3的时候其实是有media媒体查询的</p>
+<p><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot; media=&quot;screen&quot;&gt;</code><br>代表浏览器渲染的css<br><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot; media=&quot;print&quot;&gt;</code><br>代表打印机渲染的css</p>
+<h4 id="css3媒体查询"><a href="#css3媒体查询" class="headerlink" title="css3媒体查询"></a>css3媒体查询</h4><p>语法为<code>@media mediatype and|not|only (meida feature){}</code></p>
+<p>demo:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width &lt; <span class="number">480px</span>)&#123;</span><br><span class="line">	<span class="selector-tag">body</span>&#123;</span><br><span class="line">		<span class="attribute">color</span>: <span class="number">#adadad</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，该媒体查询能使用‘<code>only</code>来解决ie8或更老旧版本浏览器的兼容问题<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> only screen and (max-width &lt; <span class="number">480px</span>)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>原理:老旧浏览器读取上面媒体查询的内容得到的结果为<code>media=&quot;only&quot;</code>，然而老旧浏览器的媒体查询没有<code>only</code>这个属性，所以默认是不会渲染该媒体的样式</p>
+<h4 id="媒体功能"><a href="#媒体功能" class="headerlink" title="媒体功能"></a>媒体功能</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">width</td>
+<td style="text-align:left">视口宽度</td>
+</tr>
+<tr>
+<td style="text-align:left">height</td>
+<td style="text-align:left">视口高度</td>
+</tr>
+<tr>
+<td style="text-align:left">device-width</td>
+<td style="text-align:left">渲染表面的宽度，即设备屏幕的宽度</td>
+</tr>
+<tr>
+<td style="text-align:left">device-height</td>
+<td style="text-align:left">渲染表面的高度，即设备屏幕的高度</td>
+</tr>
+<tr>
+<td style="text-align:left">orientation</td>
+<td style="text-align:left">检查设备处于横向还是纵向</td>
+</tr>
+<tr>
+<td style="text-align:left">aspect-ratio</td>
+<td style="text-align:left">基于视口宽度和高度的宽高比</td>
+</tr>
+<tr>
+<td style="text-align:left">device-aspect-ratio</td>
+<td style="text-align:left">渲染表面的宽度和高度的宽高比</td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">每种颜色的位数（bits），如:min-color：16</td>
+</tr>
+<tr>
+<td style="text-align:left">resolution</td>
+<td style="text-align:left">检测屏幕或打印机的分辨率（dpi）</td>
+</tr>
+</tbody>
+</table>
+<p>以上属性均可添加前缀max-或min-</p>
+<h4 id="视口：viewport"><a href="#视口：viewport" class="headerlink" title="视口：viewport"></a>视口：viewport</h4><p>该内容主要针对移动端</p>
+<p>移动端的视口有三个：布局视口（layout viewport）、可视视口（visual viewport）和理想视口（ideal viewport）</p>
+<p>布局视口：页面渲染后的分辨率，可大于可视视口</p>
+<p>可视视口：设备的分辨率</p>
+<p>理想视口：布局视口在一个设备上的最佳尺寸</p>
+<p>一般实现理想窗口的方法<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code><br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no&quot;&gt;</code></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
